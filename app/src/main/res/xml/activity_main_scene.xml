@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+        <KeyFrameSet>
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="90"
+                motion:motionTarget="@+id/closeImage" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="90"
+                motion:motionTarget="@+id/playImage" />
+            <KeyAttribute
+                motion:motionTarget="@+id/textView"
+                motion:framePosition="95"
+                android:alpha="0" />
+        </KeyFrameSet>
+        <OnSwipe
+            motion:touchAnchorId="@+id/mainContainer"
+            motion:dragDirection="dragDown"
+            motion:touchAnchorSide="bottom" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start"></ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/bnv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="1"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/rcy"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            motion:layout_constraintBottom_toTopOf="@+id/bnv"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/mainContainer"
+            motion:layout_constraintVertical_bias="1.0" />
+        <Constraint
+            android:id="@+id/mainContainer"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            motion:layout_constraintBottom_toTopOf="@+id/bnv"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="1.0" />
+        <Constraint
+            android:id="@+id/mainImage"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/mainContainer"
+            motion:layout_constraintStart_toStartOf="@id/mainContainer"
+            motion:layout_constraintTop_toTopOf="@+id/mainContainer" />
+        <Constraint
+            android:id="@+id/playImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:alpha="1"
+            motion:layout_constraintBottom_toBottomOf="@+id/closeImage"
+            motion:layout_constraintEnd_toStartOf="@+id/closeImage"
+            motion:layout_constraintTop_toTopOf="@+id/closeImage" />
+        <Constraint
+            android:id="@+id/closeImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="1"
+            motion:layout_constraintBottom_toBottomOf="@+id/mainContainer"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/mainContainer"
+            android:layout_marginEnd="24dp" />
+        <Constraint
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="24dp"
+            android:alpha="1"
+            motion:layout_constraintBottom_toBottomOf="@+id/playImage"
+            motion:layout_constraintEnd_toStartOf="@+id/playImage"
+            motion:layout_constraintStart_toEndOf="@+id/mainImage"
+            motion:layout_constraintTop_toTopOf="@+id/playImage" />
+    </ConstraintSet>
+</MotionScene>
